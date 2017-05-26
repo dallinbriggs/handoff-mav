@@ -1,0 +1,10 @@
+<launch>
+        <arg name="fcu_url" default="/dev/ttyTHS2:115200" />
+
+        <include file="$(find mavros)/launch/apm.launch">
+                <arg name="fcu_url" value="$(arg fcu_url)" />
+        </include>
+	
+	<node ns="ins" name="ins_node" pkg="inertial_sense" type="inertial_sense_node"/>
+	
+</launch>

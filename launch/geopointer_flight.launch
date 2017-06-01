@@ -8,11 +8,16 @@
           <param name="port" type="string" value="/dev/inertial_sense" />
         </node>
 
-        <node ns="rosflight" name="fcu_io_node" pkg="rosflight" type="rosflight_io">
+        <node name="fcu_io_node" pkg="rosflight" type="rosflight_io">
             <param name="port" type="string" value="/dev/naze"/>
         </node>
 
-        <!-- <node ns="ros_plane" name="ros_plane_node" pkg="ros_plane" type="ros_plane_estimator"/> -->
+        <node name="ros_plane_estimator" pkg="ros_plane" type="ros_plane_estimator" >
+          <remap from="/gps/data" to="/ins/gps"/>
+        </node>
+
+        <node name="Target_Position_Publisher" pkg="handoff" type="target_pos_pub.py" />
+
 
 
 </launch>

@@ -6,6 +6,7 @@
 
         <node ns="ins" name="ins_node" pkg="inertial_sense" type="inertial_sense_node">
           <param name="port" type="string" value="/dev/inertial_sense" />
+          <param name="dynamic_model" type="int" value="8"/>
         </node>
 
         <node name="fcu_io_node" pkg="rosflight" type="rosflight_io">
@@ -15,6 +16,8 @@
         <node name="ros_plane_estimator" pkg="ros_plane" type="ros_plane_estimator" >
           <remap from="/gps/data" to="/ins/gps"/>
         </node>
+
+        <node name="pointgrey_camera" pkg="pointgrey_camera_driver" type="camera_node"/>
 
         <node name="Target_Position_Publisher" pkg="handoff" type="target_pos_pub.py" />
 
